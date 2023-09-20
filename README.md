@@ -16,9 +16,26 @@ This repository contains a Generative Adversarial Network (GAN) implementation f
    generator.load_model('generatormodel.h5')
 
 **Errors Faced**
-- axes dont match array error occurred due to change in architecture shape during training of the generator model with the 'generatormodel.h5' shape. So, I used the freeze_layers to freeze layers in keras. 
+- axes dont match array error occurred as the model architecture is changed after the model weights are saved. When the model weights are loaded back into the model, the axes don't match array error occurs.
+
+To avoid this error, you can freeze the model's layers before loading the weights:
+  
+  ```python
+  from keras.models import Model
+  def freeze_layers(model):
+    for i in model.layers:
+        i.trainable = False
+        if isinstance(i, Model):
+            freeze_layers(i)
+    return model
+
+model_freezed = freeze_layers(generator)
+model_freezed.save("/content/generatormodel.h5")
+
+```markdown
 
 **Generating new images** 
+
 ```python
 
 imgs = generator.predict(tf.random.normal((16, 128, 1)))
