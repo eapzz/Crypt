@@ -30,21 +30,5 @@ To avoid this error, you can freeze the model's layers before loading the weight
     return model
 
 model_freezed = freeze_layers(generator)
-model_freezed.save("/content/generatormodel.h5")
+model_freezed.save("/content/generatormodel.h5") 
 
-```markdown
-
-**Generating new images** 
-
-```python
-
-imgs = generator.predict(tf.random.normal((16, 128, 1)))
-# Plot the generated images
-fig, ax = plt.subplots(ncols=4, nrows=4, figsize=(10, 10))
-for r in range(4):
-    for c in range(4):
-        ax[r][c].imshow(imgs[(r + 1) * (c + 1) - 1])
-
-
-
-        
