@@ -12,9 +12,10 @@ This repository contains a Generative Adversarial Network (GAN) implementation f
 2. Run the `FashionGan.ipynb` script.
 3. Monitor the training progress by visualizing the generated images and the loss curves.
 4. After training, upload the model weights for the generator model from 'generatormodel.h5'.
-5. ```python
+ ```python
    generator.load_model('generatormodel.h5')
-   
+ ```
+
 **Generating new images**
  ```python
 imgs = generator.predict(tf.random.normal((16, 128, 1)))
@@ -24,6 +25,7 @@ fig, ax = plt.subplots(ncols=4, nrows=4, figsize=(10, 10))
 for r in range(4):
     for c in range(4):
         ax[r][c].imshow(imgs[(r + 1) * (c + 1) - 1])
+```
 
 **Errors Faced**
 - Axes dont match array error occurred as the model architecture is changed after the model weights are saved. When the model weights are loaded back into the model, the axes don't match array error occurs.
@@ -41,4 +43,4 @@ To avoid this error, you can freeze the model's layers before loading the weight
 
 model_freezed = freeze_layers(generator)
 model_freezed.save("/content/generatormodel.h5") 
-
+```
