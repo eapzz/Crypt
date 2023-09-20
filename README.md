@@ -43,4 +43,4 @@ To avoid this error, you can freeze the model's layers before loading the weight
 
 model_freezed = freeze_layers(generator)
 model_freezed.save("/content/generatormodel.h5") 
-```
+
