@@ -9,12 +9,20 @@ This repository contains a Generative Adversarial Network (GAN) implementation f
 **To train the GAN:**
 - number of epochs = 20 # reccommended > 1000
 1. Import the neccessary dependancies - tensorflow, tensroflow_datasets
-2. Upload the model weights for the generator model from 'generatormodel.h5'
+2. Create the directory 'images'
+   ```python
+   import os
+   if not os.path.exists("images"):
+    os.makedirs("images")
+   ```
+if not os.path.exists("images"):
+    os.makedirs("images")
+4. Upload the model weights for the generator model from 'generatormodel.h5'
    ```python
    generator.load_model('generatormodel.h5')
- 
-3. Run the `FashionGan.ipynb` script on colab.(A link to colab is provided)
-4. Monitor the training progress by visualizing the loss curve for both generator and discriminator
+ ```
+5. Run the `FashionGan.ipynb` script on colab.(A link to colab is provided)
+6. Monitor the training progress by visualizing the loss curve for both generator and discriminator
 
  **Generating new images**
  ```python
