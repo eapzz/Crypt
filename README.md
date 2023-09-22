@@ -7,8 +7,11 @@ This repository contains a Generative Adversarial Network (GAN) implementation f
 **GANs** are a type of machine learning model that can be used to generate new data, such as images, text, or audio. They work by training two competing models: a generator and a discriminator. The generator tries to generate new data that is indistinguishable from real data, while the discriminator tries to distinguish between real and fake data.
 
 **To train the GAN:**
+
 - number of epochs = 20 # reccommended > 1000
-1. Import the neccessary dependancies - tensorflow, tensroflow_datasets
+- Python version:3.10.12
+  
+1. Import the neccessary dependancies - tensorflow(version:2.13.0), tensroflow_datasets
 2. Create the directory 'images'
    ```python
    import os
@@ -51,4 +54,5 @@ To avoid this error, you can freeze the model's layers before loading the weight
 
 model_freezed = freeze_layers(generator)
 model_freezed.save("/content/generatormodel.h5") 
-
+ ```
+ 
